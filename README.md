@@ -30,9 +30,9 @@ I am documenting every concept, code snippet, and project here.
 | Week | 📂 Topic / Module | 🛠️ Tech Involed | 🚦 Status |
 | :---: | :--- | :--- | :---: |
 | **01** | [**HTML & CSS**](./Week-01) | Flexbox, Grid, Semantics | ✅ Done |
-| **02** | [**JS Basics**](./Week-02) | Variables, Loops, Functions | ✅ Done |
-| **03** | [**JS Architecture**](./03-JS_Architecture) |Callbacks, CPU vs IO Tasks Call Stack, Event Loop | ✅ Done |
-| **04** | [**Async JS**](./04-Async_JS) | Promises, Async/Await, Callbacks | 🚧 In Progress |
+| **02** | [**JS Basics**](./Week-02) | Variables, Loops, Functions | 🚧 In Progress   |
+| **03** | [**JS Architecture**](./03-JS_Architecture) |Callbacks, CPU vs IO Tasks Call Stack, Event Loop |  ⏳ Pending |
+| **04** | [**Async JS**](./04-Async_JS) | Promises, Async/Await, Callbacks | ⏳ Pending|
 | **05** | [**Node vs Browser JS**](./05-Node_Browser) | Runtime Differences, APIs | ⏳ Pending |
 | **06** | [**HTTP & Express**](./06-HTTP_Express) | REST, Status Codes, Middlewares | ⏳ Pending |
 | **07** | [**Databases & Mongo**](./07-Databases_Mongo) | NoSQL, Mongoose, Aggregations | ⏳ Pending |
@@ -58,14 +58,16 @@ These are the "Big 4" milestone projects I am building to cement my knowledge.
 | **2. Lovable (Clone)** | A simpler UI/UX focused project. | React, Tailwind | ⏳ |
 | **3. Codeforces Clone** | Competitive programming platform logic. | Next.js, Docker | ⏳ |
 | **4. Trading App** | High-frequency data handling & order matching. | WebSockets, PubSub | ⏳ |
-⏳ 🚧 ✅
+
 ---
+⏳ 🚧 ✅
 
 ## 📚 Learning Resources
 
 The giants whose shoulders I stand on:
 
 1.  **Harkirat Singh (100xDevs)** – *The primary driver of this curriculum.*
+2.  **![Javascript.info](https://javascript.info/)** – *All About JS*
 3.  **React.dev** – *The official documentation bible.*
 4.  **Open Source** – *Testing skills via GSoC orgs & OS companies.*
 
