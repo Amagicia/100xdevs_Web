@@ -25,8 +25,45 @@
   - `npm run test-perfect`
 */
 
+// ? Better Approach -
+
 function isPerfectNumber(num) {
-  // Your code here
+    if (num === 1) return false;
+    let sum = 0;
+    for (let i = 1; i <= num / 2; i++) {
+        if (num % i === 0) {
+            sum += i;
+        }
+    }
+    if (sum === num) {
+        return true;
+    }
+    return false;
 }
+
+// ! Correct but have issues time taking
+// function isPerfectNumber(num) {
+//     if (num === 1) return false;
+//     let ans = [];
+//     let i = 1;
+//     while (num/2 > i) {
+//         if (num % i == 0) {
+//             ans.push(i);
+//         }
+//         i++;
+
+//     }
+//     let summed = 0;
+//     ans.forEach((element) => {
+//         summed = summed + element;
+//     });
+//     if (num == summed) {
+//         return true;
+//     }
+//     return false;
+// }
+// let str = [1, 1, 1, 2];
+let result = isPerfectNumber(28);
+console.log(result);
 
 module.exports = { isPerfectNumber };
