@@ -26,10 +26,24 @@
 */
 
 function countVowels(str) {
-  // Your code here
+    let ans = 0;
+    if (str == "") return ans;
+    let vowels = ["a", "e", "i", "o", "u"];
+    let data = str.toLowerCase().split("");
+    // console.log(data);
+
+    vowels.forEach((element) => {
+        // console.log(element);
+        for (const value of data) {
+            if (element == value) {
+                ans++;
+            }
+        }
+    });
+    return ans;
 }
+// let elm = "AEIOUaeiou";
+// let result = countVowels(elm);
+// console.log(result);
 
 module.exports = { countVowels };
-
-
-
