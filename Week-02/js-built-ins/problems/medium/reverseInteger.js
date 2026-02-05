@@ -22,7 +22,18 @@
 */
 
 function reverseInteger(num) {
-  // Your code here
-}
+    if (num === 0) return 0;
+    let isnegative = num < 0;
+    num = Math.abs(num);
+    let ans = 0;
 
+    while (num > 0) {
+        let rim = num % 10;
+        ans = ans * 10 + rim;
+        num = Math.floor(num / 10);
+    }
+    return isnegative?-ans:ans;
+}
+// let result = reverseInteger(-123);
+// console.log(result);
 module.exports = reverseInteger;
