@@ -19,7 +19,6 @@
 */
 
 function countOccurrences(arr) {
-    // Your code here
     let ans = {};
     if (arr.length == 0) return ans;
     arr.forEach((element) => {
