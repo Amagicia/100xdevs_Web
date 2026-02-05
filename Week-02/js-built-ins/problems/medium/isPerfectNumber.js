@@ -63,7 +63,7 @@ function isPerfectNumber(num) {
 //     return false;
 // }
 // let str = [1, 1, 1, 2];
-let result = isPerfectNumber(28);
-console.log(result);
+// let result = isPerfectNumber(28);
+// console.log(result);
 
 module.exports = { isPerfectNumber };

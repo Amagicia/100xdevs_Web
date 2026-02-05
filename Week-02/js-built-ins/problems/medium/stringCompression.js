@@ -26,7 +26,7 @@
 
 // ? Approach - cheack if the char and +1 char are same the ++ count , until the next char are diffrent,
 // ? when diffrent then add that repeated char to ans and cheack if count is >=2 then add count to ans and reset the count to 1;
- 
+
 function compression(str) {
     if (str.length === 0) return "";
     let ans = "";
@@ -66,7 +66,7 @@ function compression(str) {
 //     }
 // return ans;
 // }
-let result = compression("abc");
-console.log(result);
+// let result = compression("abc");
+// console.log(result);
 
 module.exports = compression;

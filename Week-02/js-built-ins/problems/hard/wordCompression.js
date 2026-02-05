@@ -21,10 +21,29 @@
   - `npm run test-compressWord`
 */
 
-
 function compressWords(arr) {
-  // Your code here
-}
+    if (arr.length === 0) return [];
+    let result = [];
+    let count = 1;
 
+    for (let i = 0; i <= arr.length; i++) {
+        let ans = "";
+        if (arr[i] === arr[i + 1]) {
+            count++;
+        } else {
+            ans += arr[i];
+            if (count >= 2) {
+                ans += count;
+            }
+            count = 1;
+            result.push(ans);
+        }
+    }
+
+    return result;
+}
+// let arr = ["cat", "dog", "dog", "dog", "cat"]; //["cat", "dog3", "cat"]
+// let r = compressWords(arr);
+// console.log(r);
 
 module.exports = compressWords;

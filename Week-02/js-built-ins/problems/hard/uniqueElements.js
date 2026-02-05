@@ -19,7 +19,22 @@
 */
 
 function getUniqueElements(arr) {
-  // Your code here
+    if (arr.length === 0) return [];
+
+    let seen = new Set();
+    let duplicate = new Set();
+
+    arr.forEach((element) => {
+        if (seen.has(element)) {
+            duplicate.add(element);
+        } else {
+            seen.add(element);
+        }
+    });
+    return [...seen];
 }
+// let arr = [10, 20, 30, 10, 40, 20];
+// let r = getUniqueElements(arr);
+// console.log(r);
 
 module.exports = getUniqueElements;

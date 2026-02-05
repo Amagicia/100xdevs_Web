@@ -54,8 +54,8 @@ function findDuplicates(arr) {
     });
     return [...duplicate];
 }
-let str = [1, 1, 1, 2];
-let result = findDuplicates(str);
-console.log(result);
+// let str = [1, 1, 1, 2];
+// let result = findDuplicates(str);
+// console.log(result);
 
 module.exports = findDuplicates;
