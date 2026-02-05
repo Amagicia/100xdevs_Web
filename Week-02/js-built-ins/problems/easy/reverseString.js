@@ -19,7 +19,20 @@
 */
 
 function reverseString(str) {
-  // Your code here
+    if (str == "") return "";
+    let ans="";
+    let data = str.split("");
+    console.log(data);
+
+    for (let index = data.length - 1; index >= 0; index--) {
+        console.log("index value => ", index);
+
+        ans = ans + data[index];
+    }
+    return ans;
 }
+// let str = "";
+// let result = reverseString(str);
+// console.log(result);
 
 module.exports = reverseString;
