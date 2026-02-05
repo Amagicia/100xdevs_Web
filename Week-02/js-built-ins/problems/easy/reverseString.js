@@ -31,6 +31,13 @@ function reverseString(str) {
     }
     return ans;
 }
+
+/* //! ----------------------------- Better Approach ---------------------------- */
+
+// let str = "hello";
+// let reversed = str.split("").reverse().join("");
+// console.log(reversed); // "olleh"
+
 // let str = "";
 // let result = reverseString(str);
 // console.log(result);
