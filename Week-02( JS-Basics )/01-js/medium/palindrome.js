@@ -29,7 +29,7 @@ function isPalindrome(s) {
   return str === str.split("").reverse().join("");
 }
  */
-let ans = isPalindrome("s             ss");
-console.log(ans);
+// let ans = isPalindrome("s             ss");
+// console.log(ans);
 
 module.exports = isPalindrome;
