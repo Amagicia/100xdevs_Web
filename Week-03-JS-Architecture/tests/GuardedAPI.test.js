@@ -1,4 +1,4 @@
-const GuardedAPI = require("../callbacks/medium/GuardedAPI");
+const GuardedAPI = require("../callbacks/mediumGuardedAPI");
 
 describe("GuardedAPI callback", () => {
   test("holds calls until initialization is complete", (done) => {

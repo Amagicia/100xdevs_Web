@@ -11,6 +11,45 @@
 // Invoke finalCallback after all tasks have completed, or with an error
 // if any task fails.
 
-function runWithDependencies(tasks, finalCallback) {}
-
+function runWithDependencies(tasks, finalCallback) {
+    const completed = {};
+    const results = {};
+    let finished = false;
+  
+    function tryRun() {
+      if (finished) return;
+  
+      // if all tasks are done
+      if (Object.keys(completed).length === tasks.length) {
+        finished = true;
+        return finalCallback(null, results);
+      }
+  
+      for (const task of tasks) {
+        if (completed[task.id]) continue;
+  
+        const ready = task.deps.every(dep => completed[dep]);
+        if (!ready) continue;
+  
+        // mark as running by temporary flag
+        completed[task.id] = false;
+  
+        task.run((err, res) => {
+          if (finished) return;
+  
+          if (err) {
+            finished = true;
+            return finalCallback(err);
+          }
+  
+          completed[task.id] = true;
+          results[task.id] = res;
+          tryRun(); // unlock next tasks
+        });
+      }
+    }
+  
+    tryRun();
+  }
+  
 module.exports = runWithDependencies;
