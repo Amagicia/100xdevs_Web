@@ -36,13 +36,11 @@ function fetchWithTimeout(url, ms, callback) {
     }, ms);
 
     fetch(url, (err, data) => {
-
         if (!flag) {
             flag = true;
             clearTimeout(timeOutId);
             callback(err, data);
         }
-        
     });
 }
 
