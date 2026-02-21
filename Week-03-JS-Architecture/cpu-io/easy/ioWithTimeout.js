@@ -7,6 +7,22 @@
 // If the I/O operation does not complete within the specified number
 // of milliseconds, the returned promise should reject with a "Timeout" error.
 
-async function ioWithTimeout(fn, ms) {}
+async function ioWithTimeout(fn, ms) {
+    return new Promise((resolve, reject) => {
+        let timer = setInterval(function () {
+            reject("Timeout");
+        }, ms);
+
+        fn()
+            .then((r) => {
+                clearInterval(timer);
+                resolve(r);
+            })
+            .catch((e) => {
+                clearInterval(timer);
+                reject(e);
+            });
+    });
+}
 
 module.exports = ioWithTimeout;

@@ -9,8 +9,28 @@
 // 3. Handle cases where a file might not exist (optional: you can let it throw or return 0).
 // 4. Tasks should ideally be performed in parallel for efficiency.
 
+const { error } = require("console");
+const { errorMonitor } = require("events");
+
 const fs = require("fs").promises;
 
-async function sumFileSizes(filePaths) {}
+async function sumFileSizes(filePaths) {
+    let total=0;
+    try {
+        for (let path of filePaths) {
+            const stats = await fs.stat(path);
+
+            if (!stats.isFile()) {
+                // console.log("It is a file");
+                return 0;
+            }
+            total+=stats.size;
+        }
+        return total;
+    } catch (error) {
+        throw error;
+    }
+  
+}
 
 module.exports = sumFileSizes;
