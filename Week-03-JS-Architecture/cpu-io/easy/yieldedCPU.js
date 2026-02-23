@@ -13,7 +13,7 @@
 
 async function yieldedCPU(iterations) {
     let c = 0;
-    const CHUNK_SIZE = 10;
+    const CHUNK_SIZE = 1000;
 
     for (let i = 0; i < iterations; i++) {
         c = c + i;
