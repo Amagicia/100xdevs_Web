@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo in memory</title>
+    <style>
+        body {
+            background: #000;
+            color: antiquewhite;
+            font-size: 22px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-weight: 600;
+            padding: 50px;
+        }
+
+
+        button,
+        input {
+            padding: 10px;
+            color: rgb(0, 0, 0);
+            font-size: 22px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background: white;
+            color: #000;
+        }
+
+        .cont {
+            display: flex;
+            /* 🔥 left-right layout */
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        /* LEFT SIDE */
+        #list {
+            width: 50%;
+            background: #111;
+            padding: 20px;
+            border-radius: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        /* RIGHT SIDE */
+        #adding {
+            display: flex;
+            flex-direction: column;
+            /* 🔥 vertical stack */
+            gap: 15px;
+            width: 40%;
+        }
+
+        /* INPUT */
+        #dataId {
+            padding: 10px;
+        }
+
+        /* BUTTON */
+        button {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #todolist div {
+            margin-bottom: 10px;
+            padding: 8px;
+            background: #222;
+            border-radius: 5px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="cont">
+        <div id="todolist">
+            Empty...
+        </div>
+        <div id="adding">
+            <input type="text" id="dataId" placeholder="Todo works ... ">
+            <button onclick="TodoAdded()">Add Todo</button>
+        </div>
+    </div>
+
+    <script>
+
+        let isempty = true;
+
+        document.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                TodoAdded()
+            }
+        })
+
+        async function TodoAdded() {
+            let data = document.getElementById("dataId").value
+            try {
+                // const token = localStorage.getItem("token");
+                const res = await axios.post('http://localhost:3000/data', { todo: data }, {
+                    headers: {
+                        token:localStorage.getItem("token")
+                    }
+                });
+                // const notes = res.data.todo;
+                if (isempty) {
+                    document.getElementById("todolist").innerHTML = "";
+                    isempty = false;
+                }
+
+                const noteNote = document.createElement("div");
+                noteNote.innerHTML = data;
+                noteNote.setAttribute("style", "border: 2px solid black; padding: 10px;")
+                document.getElementById("todolist").appendChild(noteNote);
+                document.getElementById("dataId").value = ""
+
+            } catch (err) {
+                console.error(err);
+                alert("err in todo added function");
+            }
+
+        }
+        async function gettodos() {
+            const token= localStorage.getItem("token");
+
+            if (!token) {
+                window.location = "/";
+            }
+            try {
+                const res = await axios.get('http://localhost:3000/data', {
+                    headers: {
+                        token:localStorage.getItem("token")
+                    }
+                });
+                const notes = res.data.todo;
+
+                if (notes.length != 0) {
+                    document.getElementById("todolist").innerHTML = "";
+                    isempty = false;
+                }
+
+
+                for (let i = 0; i < notes.length; i++) {
+                    const noteNote = document.createElement("div");
+                    noteNote.innerHTML = notes[i];
+                    noteNote.setAttribute("style", "border: 2px solid black; padding: 10px;")
+                    document.getElementById("todolist").appendChild(noteNote);
+                }
+
+            } catch (err) {
+                console.error(err);
+                alert("Signup failed");
+            }
+        }
+        gettodos()
+    </script>
+</body>
+
+</html>
